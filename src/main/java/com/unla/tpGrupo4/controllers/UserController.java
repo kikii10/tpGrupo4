@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.unla.tpGrupo4.entities.User;
 import com.unla.tpGrupo4.helpers.ViewRouteHelper;
@@ -30,7 +31,9 @@ public class UserController {
 	@GetMapping("/loginsuccess")
 	public String loginCheck() {
 		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//user.getUserRoles()
-		return "redirect:/user";
+		//user.getUserRoles();
+		//return "redirect:/user";
+		return "redirect:/index";
 	}
+
 }
