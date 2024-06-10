@@ -9,6 +9,8 @@ public class ViewRouteHelper {
 	//USER
 	public final static String USER_LOGIN = "user/login";
 	public final static String USER_LOGOUT = "user/logout";
+	public final static String USER_ADMIN = "user/admin";
+	public final static String USER_USER = "user/user";
 	
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
