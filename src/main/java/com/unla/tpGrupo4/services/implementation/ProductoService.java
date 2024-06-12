@@ -8,24 +8,34 @@ import org.springframework.stereotype.Service;
 
 import com.unla.tpGrupo4.entities.Producto;
 import com.unla.tpGrupo4.repositories.IProductoRepository;
+import com.unla.tpGrupo4.repositories.IStockRepository;
 
 @Service("ProductoService")
 public class ProductoService implements IProductoService{
 	private IProductoRepository productoRepository;
-	  @Autowired
-	    public ProductoService(IProductoRepository productoRepository) {
+	private IStockService stockService;
+	 @Autowired
+	    public ProductoService(IProductoRepository productoRepository, IStockService stockService) {
 	        this.productoRepository = productoRepository;
+	        this.stockService = stockService;
 	    }
 	public List<Producto> verProductos() {
         return productoRepository.findAll();
     }
 
     public void crearProducto(Producto producto) {
+    	
+
         productoRepository.save(producto);
+        stockService.agregarProducto(stockService.buscarStock(1), producto);
+        
     }
 
     public void borrarProducto(int id) {
+    	
         productoRepository.deleteById(id);
+       
+        
     }
 
     public Producto buscarProducto(int id) {
