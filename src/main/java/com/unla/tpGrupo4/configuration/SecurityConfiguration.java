@@ -29,11 +29,34 @@ public class SecurityConfiguration {
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+	    http.csrf().disable()
+	        .cors().disable()
+	        .authorizeRequests()
+	            .anyRequest().permitAll()
+	            .and()
+	        .formLogin(login -> {
+	            login.loginPage("/login");
+	            login.loginProcessingUrl("/loginprocess");
+	            login.usernameParameter("username");
+	            login.passwordParameter("password");
+	            login.defaultSuccessUrl("/loginsuccess",true);
+	            login.permitAll();
+	        })
+	        .logout(logout -> {
+	            logout.logoutUrl("/logout");
+	            logout.logoutSuccessUrl("/login");
+	            logout.permitAll();
+	        });
+	        
+	    return http.build();
+	}
+	/*SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 		return http
 				.csrf(AbstractHttpConfigurer::disable)
 				.cors(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(auth -> {
-					auth.requestMatchers("/css/*", "/imgs/*", "/js/*", "/vendor/bootstrap/css/*",
+					auth.requestMatchers("/css/*", "/imgs/*", "/js/*", 
+							"/vendor/bootstrap/css/*",
 							"/vendor/jquery/*", "/vendor/bootstrap/js/*", "/api/v1/**").permitAll();
 					auth.anyRequest().authenticated();
 				})
@@ -51,7 +74,7 @@ public class SecurityConfiguration {
 					logout.permitAll();
 				})
 				.build();
-	}
+	}*/
 
 	@Bean
 	AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
@@ -70,5 +93,6 @@ public class SecurityConfiguration {
 	PasswordEncoder passwordEncoder(){
 		return new BCryptPasswordEncoder();
 	}
+	
 }
 

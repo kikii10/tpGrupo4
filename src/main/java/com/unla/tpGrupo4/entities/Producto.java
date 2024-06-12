@@ -11,26 +11,28 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Entity
 @Getter @Setter @NoArgsConstructor
 public class Producto {
-	
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idProducto;
-	
-	@Column(name="producto", nullable=false, length=60)
-	private String producto;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idProducto;
+    
+    @Column(name="nombre", nullable=false)
+    private String nombre;
+    
+    @Column(name="codigo", nullable=false)
+    private int codigo;
 
-	@Column(name="precio", nullable=false, length=60)
-	private double precio;
+    @Column(name="precio", nullable=false)
+    private double precio;
 
-	public Producto( String producto, double precio) {
-		super();
-		this.producto = producto;
-		this.precio = precio;
-	}
-	
-	
+    public Producto(int codigo, String nombre, double precio) {
+        super();
+        this.nombre = nombre;
+        this.precio = precio;
+        this.codigo = codigo;
+    }   
 }

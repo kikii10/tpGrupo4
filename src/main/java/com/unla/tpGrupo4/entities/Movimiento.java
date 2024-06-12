@@ -32,7 +32,7 @@ public class Movimiento {
 
 	@OneToMany(fetch=FetchType.LAZY)
 	@JoinColumn(name = "idMovimiento")
-	private Set<Lote> lotes = new HashSet<>();
+	private Set<Producto> lotes = new HashSet<>();
 	
     @Column(name = "fecha", nullable = false)
 	    private LocalDate fecha;
