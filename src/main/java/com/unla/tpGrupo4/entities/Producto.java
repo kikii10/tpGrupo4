@@ -32,15 +32,24 @@ public class Producto {
     @Column(name="precio", nullable=false)
     private double precio;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idMovimiento")
-    private Movimiento movimiento;
+    @Column(name="stock", nullable=false)
+    private int stock;
+    
+    @Column(name="stockMinimo", nullable=false)
+    private int stockMinimo;
+    
+    @Column(name="descripcion", nullable=false)
+    private String descripcion;
+    
+    
 
-    public Producto(int codigo, String nombre, double precio,Movimiento movimiento) {
+    public Producto(int codigo, String nombre, double precio, int stock, int stockMinimo, String descripcion) {
         super();
         this.nombre = nombre;
         this.precio = precio;
         this.codigo = codigo;
-        this.movimiento = movimiento;
+        this.stock = stock;
+        this.stockMinimo = stockMinimo;
+        this.descripcion = descripcion;
     }   
 }

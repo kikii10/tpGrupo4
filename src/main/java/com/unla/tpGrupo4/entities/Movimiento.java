@@ -23,23 +23,30 @@ import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class Movimiento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idMovimiento;
-	
-	@Column(name="tipo",  nullable=false, length=45)
+
+	@Column(name = "tipo", nullable = false, length = 45)
 	private String tipo;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idproducto")
+	private Producto productos;
+
+	@Column(name = "fecha", nullable = false)
+	private LocalDate fecha;
+
+	@Column(name = "cantidad", nullable = false)
+	private int cantidad;
 	
-	 @OneToMany(mappedBy = "movimiento", cascade = CascadeType.ALL, orphanRemoval = true)
-	    private List<Producto> productos = new ArrayList<>();
-	
-    @Column(name = "fecha", nullable = false)
-	    private LocalDate fecha;
-    
-    
-    
+	@Column(name = "finalizado", nullable = false)
+	private boolean finalizado;
 
 }

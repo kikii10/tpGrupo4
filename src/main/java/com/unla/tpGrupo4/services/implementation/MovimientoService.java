@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.unla.tpGrupo4.entities.Movimiento;
 import com.unla.tpGrupo4.entities.Producto;
-import com.unla.tpGrupo4.entities.Stock;
 import com.unla.tpGrupo4.repositories.IMovimientoRepository;
 import com.unla.tpGrupo4.repositories.IProductoRepository;
-import com.unla.tpGrupo4.repositories.IStockRepository;
 
 @Service("MovimientoService")
 public class MovimientoService implements IMovimientoService {
@@ -20,37 +18,21 @@ public class MovimientoService implements IMovimientoService {
 	    private IMovimientoRepository movimientoRepository;
 	 @Autowired
 	 private IProductoService productoService;
-       private IStockService stockService;
+       
          @Autowired
-	    public MovimientoService(IMovimientoRepository movimientoRepository, IStockService stockService) {
+	    public MovimientoService(IMovimientoRepository movimientoRepository) {
 	        this.movimientoRepository = movimientoRepository;
-	        this.stockService = stockService;
+	        
 	    }
 	    
        public List<Movimiento> verMovimientos() {
 	        return movimientoRepository.findAll();
 	    }
-
 	   
-	    public void crearMovimiento(Movimiento movimiento) {
-	        if ("compra".equalsIgnoreCase(movimiento.getTipo())) {
-	        	movimientoRepository.save(movimiento);
-	            for (Producto producto : movimiento.getProductos()) {
-	                producto.setMovimiento(movimiento);
-	                productoService.crearProducto(producto);
-	            }
-	            
-	            movimientoRepository.save(movimiento);
-	        } else if ("venta".equalsIgnoreCase(movimiento.getTipo())) {
-	        	movimientoRepository.save(movimiento);
-	            for (Producto producto : movimiento.getProductos()) {
-	                productoService.borrarProducto(producto.getIdProducto());
-	            }
-	            movimientoRepository.save(movimiento);
-	        } else {
-	            throw new IllegalArgumentException("Tipo de movimiento no válido: " + movimiento.getTipo());
-	        }
-	      stockService.agregarMovimiento(stockService.buscarStock(1), movimiento);
+	    
+	    public void crearMovimiento(Movimiento m) {
+	        movimientoRepository.save(m);
+
 	    }
 	   
 	    public void borrarMovimiento(int id) {

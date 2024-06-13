@@ -9,7 +9,6 @@
 	
 	import com.unla.tpGrupo4.entities.Movimiento;
 	import com.unla.tpGrupo4.entities.Producto;
-	import com.unla.tpGrupo4.entities.Stock;
 	import com.unla.tpGrupo4.entities.User;
 	
 	

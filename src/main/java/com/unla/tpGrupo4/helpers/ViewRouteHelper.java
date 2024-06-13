@@ -12,6 +12,9 @@ public class ViewRouteHelper {
 	public final static String USER_ADMIN = "user/admin";
 	public final static String USER_USER = "user/user";
 	
+	//PRODUCTO
+	public final static String PRODUCTO = "producto/producto";
+	
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
 	

@@ -8,16 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.unla.tpGrupo4.entities.Producto;
 import com.unla.tpGrupo4.repositories.IProductoRepository;
-import com.unla.tpGrupo4.repositories.IStockRepository;
 
 @Service("ProductoService")
 public class ProductoService implements IProductoService{
 	private IProductoRepository productoRepository;
-	private IStockService stockService;
+	
 	 @Autowired
-	    public ProductoService(IProductoRepository productoRepository, IStockService stockService) {
+	    public ProductoService(IProductoRepository productoRepository) {
 	        this.productoRepository = productoRepository;
-	        this.stockService = stockService;
+	        
 	    }
 	public List<Producto> verProductos() {
         return productoRepository.findAll();
@@ -27,7 +26,7 @@ public class ProductoService implements IProductoService{
     	
 
         productoRepository.save(producto);
-        stockService.agregarProducto(stockService.buscarStock(1), producto);
+        
         
     }
 
