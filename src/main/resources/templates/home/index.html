@@ -1,188 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
-    <title>Pagina principal</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/index.css">
+	<title>Pagina principal</title>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <a href="#">Página principal</a>
-        </header>
-    
-        <main>
-            <div class="titulo">
-                <h1>Nombre original</h1>
-                <p>Slogan rebuscado</p>
-            </div>
-            <div class="catalogo">
+	<div class="container">
+		<header>
+			<a href="#">Página principal</a>
+		</header>
 
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
+		<main>
+			<div class="titulo">
+				<h1>Nombre original</h1>
+				<p>Slogan rebuscado</p>
+			</div>
+			<div class="catalogo">
 
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
+				<div th:each="producto : ${productos}" class="card">
+					<div class="card-1">
+						<img th:src="${producto.linkImagen}" alt="nike">
+					</div>
+					<div class="card-2">
+						<h4 th:text="${producto.nombre}"></h4>
+						<span>$<span th:text="${producto.precio}"></span></span>
+					</div>
+					<div class="card-3">
+						<button>Comprar</button>
+					</div>
+				</div>
 
 
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
+				<!-- para q no quede vacio -->
+
+				<div class="card">
+					<div class="card-1">
+						<img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
+					</div>
+					<div class="card-2">
+						<h4>Nike Court Royale 2</h4>
+						<p>$107,999</p>
+					</div>
+					<div class="card-3">
+						<button>Comprar</button>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="card-1">
+						<img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
+					</div>
+					<div class="card-2">
+						<h4>Nike Court Royale 2</h4>
+						<p>$107,999</p>
+					</div>
+					<div class="card-3">
+						<button>Comprar</button>
+					</div>
+				</div>
 
 
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
+				<div class="card">
+					<div class="card-1">
+						<img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
+					</div>
+					<div class="card-2">
+						<h4>Nike Court Royale 2</h4>
+						<p>$107,999</p>
+					</div>
+					<div class="card-3">
+						<button>Comprar</button>
+					</div>
+				</div>
 
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
 
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
+				<div class="card">
+					<div class="card-1">
+						<img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
+					</div>
+					<div class="card-2">
+						<h4>Nike Court Royale 2</h4>
+						<p>$107,999</p>
+					</div>
+					<div class="card-3">
+						<button>Comprar</button>
+					</div>
+				</div>
 
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
+			</div>
+		</main>
 
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-1">
-                        <img src="https://nikearprod.vtexassets.com/arquivos/ids/456833" alt="nike">
-                    </div>
-                    <div class="card-2">
-                        <h4>Nike Court Royale 2</h4>
-                        <p>$107,999</p>
-                    </div>
-                    <div class="card-3">
-                        <button>Comprar</button>
-                    </div>
-                </div>
-
-            </div>
-        </main>
-        
-        <footer>
-            <h3>Copiright &copy; Grupo 4</h3>
-        </footer>
-    </div>   
+		<footer>
+			<h3>Copiright &copy; Grupo 4</h3>
+		</footer>
+	</div>
 </body>
+
 </html>

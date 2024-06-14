@@ -41,9 +41,13 @@ public class Producto {
     @Column(name="descripcion", nullable=false)
     private String descripcion;
     
+    //imagen
+    @Column(name="linkImagen", nullable=false)
+    private String linkImagen;
+    
     
 
-    public Producto(int codigo, String nombre, double precio, int stock, int stockMinimo, String descripcion) {
+    public Producto(int codigo, String nombre, double precio, int stock, int stockMinimo, String descripcion, String linkImagen) {
         super();
         this.nombre = nombre;
         this.precio = precio;
@@ -51,5 +55,6 @@ public class Producto {
         this.stock = stock;
         this.stockMinimo = stockMinimo;
         this.descripcion = descripcion;
+        this.linkImagen = linkImagen;
     }   
 }
