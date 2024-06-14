@@ -15,6 +15,9 @@ public class ViewRouteHelper {
 	//PRODUCTO
 	public final static String PRODUCTO = "producto/producto";
 	
+	//MOVIMIENTO
+	public final static String MOVIMIENTO = "movimiento/movimiento";
+	
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
 	

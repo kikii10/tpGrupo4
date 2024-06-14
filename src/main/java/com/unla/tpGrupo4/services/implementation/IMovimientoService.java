@@ -14,7 +14,7 @@ public interface IMovimientoService {
     public void borrarMovimiento(int id);
     public Movimiento buscarMovimiento(int id);
     public void modificarMovimiento(int id, Movimiento movimiento);
-
+    public List<Movimiento> findMovimientos();
 
 
 }

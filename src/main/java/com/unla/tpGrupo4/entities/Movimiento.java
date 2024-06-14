@@ -38,7 +38,7 @@ public class Movimiento {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idproducto")
-	private Producto productos;
+	private Producto producto;
 
 	@Column(name = "fecha", nullable = false)
 	private LocalDate fecha;

@@ -54,4 +54,8 @@ public class MovimientoService implements IMovimientoService {
 	            movimientoRepository.save(movimientoExistente);
 	        }
 	    }
+	    
+	    public List<Movimiento> findMovimientos() {
+	        return movimientoRepository.findMovimientos();
+	    }
 	}

@@ -51,10 +51,16 @@ public class UserController {
 			
 			return ViewRouteHelper.USER_ADMIN;
 		}else {
-			return ViewRouteHelper.USER_USER;
+			return ViewRouteHelper.INDEX;
 		}
 		
 		
 	}
+	
+	@GetMapping("/admin")
+	public String admin(Model model) {
+		return ViewRouteHelper.USER_ADMIN;
+	}
+
 
 }
