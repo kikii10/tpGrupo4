@@ -119,7 +119,7 @@
 					<div class="card mb-4">
 						<div class="card-body">
 							<table id="datatablesSimple">
-								<button class="btn btn-dark">Añadir nuevo producto</button>
+								 <a href="/formulario-producto" class="btn btn-dark">Añadir nuevo producto</a>
 								<br>
 								<br>
 								<thead>
@@ -147,8 +147,13 @@
 										<td th:text="${producto.precio}"></td>
 										<td th:text="${producto.stock}"></td>
 										<td>
-											<button class="btn btn-warning">Editar</button>
-											<button class="btn btn-danger">Eliminar</button>
+											
+											<a th:href="@{/formulario-modificar-producto/{id}(id=${producto.idProducto})}" class="btn btn-warning">Editar</a>
+
+											<form th:action="@{/borrarProducto/{id}(id=${producto.idProducto})}" method="post" style="display:inline;">
+											                                               <input type="hidden" name="_method" value="delete" />
+											                                               <button type="submit" class="btn btn-danger">Eliminar</button>
+											                                           </form>
 											<button class="btn btn-primary">Reabastecer</button>
 										</td>
 									</tr>
@@ -162,7 +167,7 @@
 			</main>
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid px-4">
-					<div class="d-flex align-items-center justify-content-between small">
+					<div class="d-flex align-items-center justify	-content-between small">
 						<div class="text-muted">Copyright &copy; Grupo 4</div>
 						<div>
 							<a href="#">Privacy Policy</a>

@@ -1,6 +1,7 @@
 package com.unla.tpGrupo4.services.implementation;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,14 @@ public class ProductoService implements IProductoService{
         
         
     }
+    
+    public boolean	existeProductoCodigo(int  codigo	) {
+   
+    		
+    	Optional<Producto> esta = productoRepository.findByCodigo(codigo);
+    	
+    	return esta.isPresent();
+    }		
 
     public void borrarProducto(int id) {
     	
@@ -44,17 +53,20 @@ public class ProductoService implements IProductoService{
     
     @Override
 	public void ModificarProducto(int id, Producto p) { 
-			Producto productoExistente = productoRepository.findById(id).orElse(null);
+    	   Producto productoExistente = productoRepository.findById(id).orElse(null);
 
 			    if (productoExistente != null) {
 			    	productoExistente.setCodigo(p.getCodigo());
 			    	productoExistente.setPrecio(p.getPrecio());
-			    	productoExistente.setNombre(p.getNombre());;
+			    	productoExistente.setNombre(p.getNombre());
 
 			    	productoRepository.save(productoExistente);
 			    }
 			
 	}
+    
+    
+    	
 }
 	
 	

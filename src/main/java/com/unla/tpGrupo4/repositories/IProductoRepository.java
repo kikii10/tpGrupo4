@@ -1,6 +1,7 @@
 package com.unla.tpGrupo4.repositories;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +15,7 @@ import com.unla.tpGrupo4.entities.User;
 @Repository("productoRepository")
 public interface IProductoRepository extends JpaRepository<Producto, Serializable> {
 
-	
+ 	Optional<Producto>  findByCodigo(int codigo); 
+ 	
+ 	
 }

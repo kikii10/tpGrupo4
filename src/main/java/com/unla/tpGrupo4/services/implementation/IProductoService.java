@@ -14,5 +14,5 @@ public interface IProductoService {
 	 public void borrarProducto(int id);
 	 public Producto buscarProducto(int id);
 	 public void ModificarProducto(int id, Producto p) ;
-
+	   public boolean	existeProductoCodigo(int  codigo);
 }

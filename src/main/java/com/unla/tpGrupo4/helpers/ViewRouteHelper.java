@@ -14,6 +14,8 @@ public class ViewRouteHelper {
 	
 	//PRODUCTO
 	public final static String PRODUCTO = "producto/producto";
+	 public static final String FORMULARIO_P = "producto/formulario_producto";
+	 public static final String FORMULARIO_P_ACTUALIZAR = "producto/modificarProducto";
 	
 	//MOVIMIENTO
 	public final static String MOVIMIENTO = "movimiento/movimiento";
