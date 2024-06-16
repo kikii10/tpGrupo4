@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,4 +53,15 @@ public class MovimientoController {
 
 		return modelAndView;
 	}
+	
+	
+	@GetMapping("/finalizar_movimiento/{id}")
+	 public ModelAndView finalizar_movimiento(@PathVariable int id) {
+		 
+		
+		movimientoService.finalizar(movimientoService.buscarMovimiento(id));
+	       
+	        return new ModelAndView("redirect:/movimiento"); // Redirige a la lista de productos después de guardar
+	    }
+	
 }

@@ -33,8 +33,8 @@ public class Movimiento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idMovimiento;
 
-	@Column(name = "tipo", nullable = false, length = 45)
-	private String tipo;
+	@Column(name = "proveedor", nullable = false, length = 45)
+	private String proveedor;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idproducto")
@@ -48,5 +48,9 @@ public class Movimiento {
 	
 	@Column(name = "finalizado", nullable = false)
 	private boolean finalizado;
+	
+	@Column(name ="precioCompra", nullable = false)
+	private double precioCompra;
+
 
 }

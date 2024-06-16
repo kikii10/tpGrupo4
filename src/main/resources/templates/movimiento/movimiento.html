@@ -112,7 +112,8 @@
 										<th>Cantidad</th>
 										<th>Fecha</th>
 										<th>Finalizado</th>
-										<th>Tipo</th>
+										<th>Precio compra</th>
+										<th>proveedor</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -122,7 +123,8 @@
 										<th>Cantidad</th>
 										<th>Fecha</th>
 										<th>Finalizado</th>
-										<th>Tipo</th>
+										<th>Precio compra</th>
+										<th>proveedor</th>
 										<th>Acciones</th>
 									</tr>
 								</tfoot>
@@ -132,9 +134,12 @@
 										<td th:text="${movimiento.cantidad}"></td>
 										<td th:text="${movimiento.fecha}"></td>
 										<td th:text="${movimiento.finalizado}"></td>
-										<td th:text="${movimiento.tipo}"></td>
+										<td th:text="${movimiento.precioCompra}"></td>
+										<td th:text="${movimiento.proveedor}"></td>
 										<td>
-											<button class="btn btn-warning">Editar</button>
+											
+											<a th:href="@{/finalizar_movimiento/{id}(id=${movimiento.idMovimiento})}"
+																							class="btn btn-warning">finalizar</a>
 											<button class="btn btn-danger">Eliminar</button>
 										</td>
 									</tr>
