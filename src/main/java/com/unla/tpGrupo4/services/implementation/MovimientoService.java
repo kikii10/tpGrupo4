@@ -11,6 +11,8 @@ import com.unla.tpGrupo4.entities.Producto;
 import com.unla.tpGrupo4.repositories.IMovimientoRepository;
 import com.unla.tpGrupo4.repositories.IProductoRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service("MovimientoService")
 public class MovimientoService implements IMovimientoService {
 	
@@ -18,8 +20,10 @@ public class MovimientoService implements IMovimientoService {
 	    private IMovimientoRepository movimientoRepository;
 	 @Autowired
 	 private IProductoService productoService;
+	 @Autowired
+	 private IProductoRepository productoRepository;
        
-         @Autowired
+     	
 	    public MovimientoService(IMovimientoRepository movimientoRepository) {
 	        this.movimientoRepository = movimientoRepository;
 	        
@@ -29,11 +33,20 @@ public class MovimientoService implements IMovimientoService {
 	        return movimientoRepository.findAll();
 	    }
 	   
-	    
+       @Transactional
 	    public void crearMovimiento(Movimiento m) {
-	        movimientoRepository.save(m);
-
-	    }
+    	   Producto producto = m.getProducto();
+           if (producto != null) {
+               Producto productoActualizado = productoService.buscarProducto(producto.getIdProducto());
+               if (productoActualizado != null) {
+                   productoActualizado.setStock(productoActualizado.getStock() + m.getCantidad());
+                   productoService.ModificarProducto(productoActualizado.getIdProducto(), productoActualizado);
+                   movimientoRepository.save(m);
+               }
+           }
+       }
+	    	
+	    
 	   
 	    public void borrarMovimiento(int id) {
 	        movimientoRepository.deleteById(id);

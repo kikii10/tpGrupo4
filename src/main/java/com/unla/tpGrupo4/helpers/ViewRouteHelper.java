@@ -19,6 +19,8 @@ public class ViewRouteHelper {
 	
 	//MOVIMIENTO
 	public final static String MOVIMIENTO = "movimiento/movimiento";
+	public  static final String FORMULARIO_M = "movimiento/formulario_movimiento";
+	
 	
 	//COMPRA
 	public final static String COMPRA = "compra/compra-form";
@@ -27,5 +29,26 @@ public class ViewRouteHelper {
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
 	public final static String ADMIN = "/admin";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -32,7 +32,7 @@ public class Producto {
     @Column(name="precio", nullable=false)
     private double precio;
     
-    @Column(name="stock", nullable=false)
+    @Column(name="stock", nullable=false)  
     private int stock;
     
     @Column(name="stockMinimo", nullable=false)
