@@ -2,79 +2,83 @@ package com.unla.tpGrupo4.services.implementation;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.unla.tpGrupo4.dtos.ProductoDTO;
 import com.unla.tpGrupo4.entities.Producto;
 import com.unla.tpGrupo4.repositories.IProductoRepository;
 
 @Service("ProductoService")
-public class ProductoService implements IProductoService{
+public class ProductoService implements IProductoService {
 	private IProductoRepository productoRepository;
-	
-	 @Autowired
-	    public ProductoService(IProductoRepository productoRepository) {
-	        this.productoRepository = productoRepository;
-	        
-	    }
-	public List<Producto> verProductos() {
-        return productoRepository.findAll();
-    }
 
-    public void crearProducto(Producto producto) {
-    	
+	@Autowired
+	public ProductoService(IProductoRepository productoRepository) {
+		this.productoRepository = productoRepository;
 
-        productoRepository.save(producto);
-        
-        
-    }
-    
-    public boolean	existeProductoCodigo(int  codigo	) {
-   
-    		
-    	Optional<Producto> esta = productoRepository.findByCodigo(codigo);
-    	
-    	return esta.isPresent();
-    }		
-
-    public void borrarProducto(int id) {
-    	
-        productoRepository.deleteById(id);
-       
-        
-    }
-
-    public Producto buscarProducto(int id) {
-        return productoRepository.findById(id).orElse(null);
-    }
-    
-    
-    @Override
-	public void ModificarProducto(int id, Producto p) { 
-    	   Producto productoExistente = productoRepository.findById(id).orElse(null);
-
-			    if (productoExistente != null) {
-			    	productoExistente.setCodigo(p.getCodigo());
-			    	productoExistente.setPrecio(p.getPrecio());
-			    	productoExistente.setNombre(p.getNombre());
-			    	productoExistente.setStockMinimo(p.getStockMinimo());
-			    	productoExistente.setDescripcion(p.getDescripcion());
-			    	productoExistente.setLinkImagen(p.getLinkImagen());
-
-			    	productoRepository.save(productoExistente);
-			    }
-			
 	}
+
+	private ModelMapper modelMapper = new ModelMapper();
+
+	public List<Producto> verProductos() {
+		return productoRepository.findAll();
+	}
+
+	public void crearProducto(Producto producto) {
+
+		productoRepository.save(producto);
+
+	}
+
+	public boolean existeProductoCodigo(int codigo) {
+
+		Optional<Producto> esta = productoRepository.findByCodigo(codigo);
+
+		return esta.isPresent();
+	}
+
+	public void borrarProducto(int id) {
+
+		productoRepository.deleteById(id);
+
+	}
+
+	public Producto buscarProducto(int id) {
+		return productoRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public void ModificarProducto(int id, Producto p) {
+		Producto productoExistente = productoRepository.findById(id).orElse(null);
+
+		if (productoExistente != null) {
+			productoExistente.setCodigo(p.getCodigo());
+			productoExistente.setPrecio(p.getPrecio());
+			productoExistente.setNombre(p.getNombre());
+			productoExistente.setStockMinimo(p.getStockMinimo());
+			productoExistente.setDescripcion(p.getDescripcion());
+			productoExistente.setLinkImagen(p.getLinkImagen());
+
+			productoRepository.save(productoExistente);
+		}
+
+	}
+
 	@Override
 	public Producto insertOrUpdate(Producto p) {
-		
+
 		return productoRepository.save(p);
 	}
-    
-    	
-}
-	
-	
 
+	@Override
+	//devuelve una lista de productoDtos
+	public List<ProductoDTO> getAll() {
+		return productoRepository.findAll().stream().map(producto -> modelMapper.map(producto, ProductoDTO.class))
+				.collect(Collectors.toList());
+	}
+
+}

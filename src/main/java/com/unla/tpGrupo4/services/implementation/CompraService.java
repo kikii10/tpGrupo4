@@ -3,10 +3,12 @@ package com.unla.tpGrupo4.services.implementation;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import com.unla.tpGrupo4.dtos.ProductoDTO;
 import com.unla.tpGrupo4.entities.Compra;
 import com.unla.tpGrupo4.entities.Producto;
 import com.unla.tpGrupo4.entities.User;
@@ -23,6 +25,8 @@ public class CompraService implements ICompraService{
 	
 	@Autowired
     private IUserRepository userRepository;
+	
+	private ModelMapper modelMapper = new ModelMapper();
    
     public CompraService(ICompraRepository compraRepository) {
         this.compraRepository = compraRepository;
@@ -45,12 +49,12 @@ public class CompraService implements ICompraService{
     	
     	m.setFecha(LocalDateTime.now());
     	m.setPrecioFinal( p.getPrecio() * m.getCantidad());
+    	//m.setProducto(modelMapper.map(p, ProductoDTO.class));
     	m.setProducto(p);
     	m.setUser(u);
     	
         compraRepository.save(m);
         
-        //TODO q al comprar baje el stock del producto
         p.setStock(p.getStock() - m.getCantidad());
         productoService.insertOrUpdate(p);
 

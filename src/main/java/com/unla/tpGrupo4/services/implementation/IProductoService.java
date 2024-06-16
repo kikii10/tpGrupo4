@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.unla.tpGrupo4.dtos.ProductoDTO;
 import com.unla.tpGrupo4.entities.Producto;
 
 @Service
 public interface IProductoService {
 
 	public List<Producto> verProductos();
+	public List<ProductoDTO> getAll();
 	public void crearProducto(Producto producto);
 	public void borrarProducto(int id);
 	public Producto buscarProducto(int id);

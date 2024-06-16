@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.tpGrupo4.dtos.ProductoDTO;
 import com.unla.tpGrupo4.entities.Producto;
 import com.unla.tpGrupo4.entities.User;
 import com.unla.tpGrupo4.helpers.ViewRouteHelper;
@@ -28,7 +29,7 @@ public class HomeController {
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.INDEX);
 		
-		List<Producto> lista = productoService.verProductos();
+		List<ProductoDTO> lista = productoService.getAll();
 		modelAndView.addObject("productos", lista);
 		
 		return modelAndView;
