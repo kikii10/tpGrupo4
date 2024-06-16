@@ -130,6 +130,7 @@
 										<th>Precio</th>
 										<th>Stock</th>
 										<th>Stock Mínimo</th>
+										<th>Activo</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -141,6 +142,7 @@
 										<th>Precio</th>
 										<th>Stock</th>
 										<th>Stock Mínimo</th>
+										<th>Activo</th>
 										<th>Acciones</th>
 									</tr>
 								</tfoot>
@@ -152,6 +154,7 @@
 										<td th:text="${producto.precio}"></td>
 										<td th:text="${producto.stock}"></td>
 										<td th:text="${producto.stockMinimo}"></td>
+										<td th:text="${producto.activo}"></td>
 										<td>
 
 											<a th:href="@{/formulario-modificar-producto/{id}(id=${producto.idProducto})}"
