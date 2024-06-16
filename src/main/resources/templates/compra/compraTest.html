@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>Productos</title>
+	<title>Compras</title>
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 	<link href="css/styles.css" rel="stylesheet" />
 	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -16,7 +16,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="index.html">Administrador</a>
+		<a class="navbar-brand ps-3" href="index.html">Admin</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
 				class="fas fa-bars"></i></button>
@@ -50,16 +50,16 @@
 			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<div class="sb-sidenav-menu-heading"></div>
-						<a class="nav-link" href="admin">
+						<div class="sb-sidenav-menu-heading">Core</div>
+						<a class="nav-link" href="index">
 							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-							Inicio
+							Dashboard
 						</a>
-						<div class="sb-sidenav-menu-heading">Menu</div>
+						<div class="sb-sidenav-menu-heading">Interface</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-							Productos
+							Layouts
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
 						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
@@ -72,7 +72,7 @@
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
 							aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-							Movimientos
+							Pages
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
@@ -115,82 +115,35 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Stock</h1>
-					<div class="card mb-4">
-						<div class="card-body">
-							<table id="datatablesSimple">
-								<a href="/formulario-movimiento" class="btn btn-dark">Hacer Pedido</a>
-								<br>
-								<br>
-								<thead>
-									<tr>
-										<th>Nombre Producto</th>
-										<th>Cantidad</th>
-										<th>Fecha</th>
-										<th>Finalizado</th>
-										<th>Tipo</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-										<th>Nombre Producto</th>
-										<th>Cantidad</th>
-										<th>Fecha</th>
-										<th>Finalizado</th>
-										<th>Tipo</th>
-										<th>Acciones</th>
-									</tr>
-								</tfoot>
-								<tbody>
-									<tr th:each="movimiento : ${movimientos}">
-										<td th:text="${movimiento.producto.nombre}"></td>
-										<td th:text="${movimiento.cantidad}"></td>
-										<td th:text="${movimiento.fecha}"></td>
-										<td th:text="${movimiento.finalizado}"></td>
-										<td th:text="${movimiento.tipo}"></td>
-										<td>
-											<button class="btn btn-warning">Editar</button>
-											<button class="btn btn-danger">Eliminar</button>
-										</td>
-									</tr>
-
-
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-				<div class="container-fluid px-4">
 					<h1 class="mt-4">Compras</h1>
 					<div class="card mb-4">
 						<div class="card-body">
-							<table id="datatablesSimple2">
+							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<th>Nombre Producto</th>
-										<th>Cantidad</th>
-										<th>Precio Final</th>
-										<th>Fecha</th>
 										<th>Usuario</th>
+										<th>Producto</th>
+										<th>Cantidad</th>
+										<th>Fecha</th>
+										<th>Precio Final</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>Nombre Producto</th>
-										<th>Cantidad</th>
-										<th>Precio Final</th>
-										<th>Fecha</th>
 										<th>Usuario</th>
+										<th>Producto</th>
+										<th>Cantidad</th>
+										<th>Fecha</th>
+										<th>Precio Final</th>
 									</tr>
 								</tfoot>
 								<tbody>
 									<tr th:each="compra : ${compras}">
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
+										<td th:text="${compra.user.username}"></td>
+										<td th:text="${compra.producto.nombre}"></td>
+										<td th:text="${compra.cantidad}"></td>
+										<td th:text="${compra.fecha}"></td>
+										<td th:text="${compra.precioFinal}"></td>
 									</tr>
 
 
@@ -202,7 +155,7 @@
 			</main>
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid px-4">
-					<div class="d-flex align-items-center justify-content-between small">
+					<div class="d-flex align-items-center justify	-content-between small">
 						<div class="text-muted">Copyright &copy; Grupo 4</div>
 						<div>
 							<a href="#">Privacy Policy</a>

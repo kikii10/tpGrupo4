@@ -29,7 +29,7 @@ public class ProductoController {
     @Autowired
     private IProductoService productoService;
 
-    @PostMapping("/guardar")
+    @PostMapping("/guardarProducto")
     public ModelAndView guardarProducto(@ModelAttribute Producto producto) {
     		
         productoService.crearProducto(producto);

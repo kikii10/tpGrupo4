@@ -11,8 +11,9 @@ public interface IProductoService {
 
 	public List<Producto> verProductos();
 	public void crearProducto(Producto producto);
-	 public void borrarProducto(int id);
-	 public Producto buscarProducto(int id);
-	 public void ModificarProducto(int id, Producto p) ;
-	   public boolean	existeProductoCodigo(int  codigo);
+	public void borrarProducto(int id);
+	public Producto buscarProducto(int id);
+	public void ModificarProducto(int id, Producto p);
+	public boolean existeProductoCodigo(int codigo);
+	public Producto insertOrUpdate(Producto p);
 }
