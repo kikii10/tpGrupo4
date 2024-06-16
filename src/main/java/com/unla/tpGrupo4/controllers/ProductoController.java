@@ -45,7 +45,7 @@ public class ProductoController {
     }
     @PostMapping("/modificarProducto")
     public ModelAndView modificarProducto(@ModelAttribute Producto producto) {
-        productoService.ModificarProducto(producto.getIdProducto(), producto);
+        productoService.insertOrUpdate( producto);
         return new ModelAndView("redirect:/producto");
     }
     

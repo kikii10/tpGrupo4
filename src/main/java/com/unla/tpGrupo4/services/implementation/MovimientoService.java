@@ -20,8 +20,7 @@ public class MovimientoService implements IMovimientoService {
 	    private IMovimientoRepository movimientoRepository;
 	 @Autowired
 	 private IProductoService productoService;
-	 @Autowired
-	 private IProductoRepository productoRepository;
+
        
      	
 	    public MovimientoService(IMovimientoRepository movimientoRepository) {
@@ -40,7 +39,7 @@ public class MovimientoService implements IMovimientoService {
                Producto productoActualizado = productoService.buscarProducto(producto.getIdProducto());
                if (productoActualizado != null) {
                    productoActualizado.setStock(productoActualizado.getStock() + m.getCantidad());
-                   productoService.ModificarProducto(productoActualizado.getIdProducto(), productoActualizado);
+                   productoService.insertOrUpdate( productoActualizado);
                    movimientoRepository.save(m);
                }
            }
@@ -62,13 +61,20 @@ public class MovimientoService implements IMovimientoService {
 	    public void modificarMovimiento(int id, Movimiento movimiento) {
 	        Movimiento movimientoExistente = movimientoRepository.findById(id).orElse(null);
 	        if (movimientoExistente != null) {
-	            movimientoExistente.setTipo(movimiento.getTipo());
+	            movimientoExistente.setProveedor(movimiento.getProveedor());
 	            movimientoExistente.setFecha(movimiento.getFecha());
 	            movimientoRepository.save(movimientoExistente);
 	        }
 	    }
-	    
+	    public Movimiento insertOrUpdate(Movimiento m) {
+	    	return movimientoRepository.save(m);
+	    }
 	    public List<Movimiento> findMovimientos() {
 	        return movimientoRepository.findMovimientos();
+	    }
+	    
+	    public void finalizar(Movimiento m) {
+	    	m.setFinalizado(true);
+	    	insertOrUpdate(m);	
 	    }
 	}

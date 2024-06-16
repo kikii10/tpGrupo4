@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.unla.tpGrupo4.entities.Movimiento;
+import com.unla.tpGrupo4.entities.Producto;
 
 @Service
 public interface IMovimientoService {
@@ -15,6 +16,7 @@ public interface IMovimientoService {
     public Movimiento buscarMovimiento(int id);
     public void modificarMovimiento(int id, Movimiento movimiento);
     public List<Movimiento> findMovimientos();
-
+    public Movimiento insertOrUpdate(Movimiento m);
+    public void finalizar(Movimiento m);
 
 }
