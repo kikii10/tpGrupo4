@@ -1,5 +1,6 @@
 package com.unla.tpGrupo4.services.implementation;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class CompraService implements ICompraService{
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
  		User u = userRepository.findByUsernameAndFetchUserRolesEagerly(username);
     	
-    	m.setFecha(LocalDateTime.now());
+    	m.setFecha(LocalDate.now());
     	m.setPrecioFinal( p.getPrecio() * m.getCantidad());
     	//m.setProducto(modelMapper.map(p, ProductoDTO.class));
     	m.setProducto(p);

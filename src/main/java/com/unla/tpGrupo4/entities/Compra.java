@@ -40,7 +40,7 @@ public class Compra {
 	private Producto producto;
 
 	@Column(name = "fecha", nullable = false)
-	private LocalDateTime fecha;
+	private LocalDate fecha;
 
 	@Column(name = "cantidad", nullable = false)
 	private int cantidad;
