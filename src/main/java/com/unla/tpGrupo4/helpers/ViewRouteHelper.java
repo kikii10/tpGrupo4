@@ -20,7 +20,12 @@ public class ViewRouteHelper {
 	//MOVIMIENTO
 	public final static String MOVIMIENTO = "movimiento/movimiento";
 	
+	//COMPRA
+	public final static String COMPRA = "compra/compra-form";
+	public final static String VER_COMPRA = "compra/compraTest";
+	
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
+	public final static String ADMIN = "/admin";
 	
 }

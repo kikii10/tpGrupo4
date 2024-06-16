@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.tpGrupo4.entities.User;
 import com.unla.tpGrupo4.entities.UserRole;
@@ -40,8 +41,8 @@ public class UserController {
 	}
 
 	@GetMapping("/loginsuccess")
-	public String loginCheck() {
-		// User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	public RedirectView loginCheck() {
+		
 		 String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		UserDetails userDetails = userService.loadUserByUsername(username);
 	        
@@ -49,13 +50,14 @@ public class UserController {
                 .anyMatch(role -> "ROLE_ADMIN".equals(role.getAuthority()));
 		if (isAdmin) {
 			
-			return ViewRouteHelper.USER_ADMIN;
+			return new RedirectView(ViewRouteHelper.ADMIN);
 		}else {
-			return ViewRouteHelper.INDEX;
+			return new RedirectView(ViewRouteHelper.ROUTE);
 		}
 		
 		
 	}
+	
 	
 	@GetMapping("/admin")
 	public String admin(Model model) {

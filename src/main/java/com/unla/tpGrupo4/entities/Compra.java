@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -18,8 +17,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,21 +31,19 @@ public class Compra {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCompra;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "iduser")
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private User user;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idproducto")
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Producto producto;
 
 	@Column(name = "fecha", nullable = false)
-	private LocalDate fecha;
+	private LocalDateTime fecha;
 
 	@Column(name = "cantidad", nullable = false)
 	private int cantidad;
 	
 	@Column(name = "precioFinal", nullable = false)
-	private int precioFinal;
+	private double precioFinal;
 
 }

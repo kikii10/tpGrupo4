@@ -59,12 +59,19 @@ public class ProductoService implements IProductoService{
 			    	productoExistente.setCodigo(p.getCodigo());
 			    	productoExistente.setPrecio(p.getPrecio());
 			    	productoExistente.setNombre(p.getNombre());
+			    	productoExistente.setStockMinimo(p.getStockMinimo());
+			    	productoExistente.setDescripcion(p.getDescripcion());
+			    	productoExistente.setLinkImagen(p.getLinkImagen());
 
 			    	productoRepository.save(productoExistente);
 			    }
 			
 	}
-    
+	@Override
+	public Producto insertOrUpdate(Producto p) {
+		
+		return productoRepository.save(p);
+	}
     
     	
 }
