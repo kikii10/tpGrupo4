@@ -1,5 +1,6 @@
 package com.unla.tpGrupo4.services.implementation;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,4 +78,19 @@ public class MovimientoService implements IMovimientoService {
 	    	m.setFinalizado(true);
 	    	insertOrUpdate(m);	
 	    }
+	    
+	    public void reabastecer(Producto producto, int cantidad) {
+	    	
+	    	producto.setStock(producto.getStock()+cantidad);
+                   Movimiento movimiento_reabastecer = new Movimiento();
+                   movimiento_reabastecer.setProducto(producto);
+                   movimiento_reabastecer.setCantidad(cantidad);
+                   movimiento_reabastecer.setFinalizado(false);
+                   movimiento_reabastecer.setFecha(LocalDate.now());
+                   movimiento_reabastecer.setPrecioCompra(producto.getPrecio()*cantidad);
+                   movimiento_reabastecer.setProveedor(movimientoRepository.findFirstByProducto_IdProducto(producto.getIdProducto()).getProveedor());
+                  productoService.insertOrUpdate(movimiento_reabastecer.getProducto());
+                   movimientoRepository.save(movimiento_reabastecer);
+	    }
+	    
 	}

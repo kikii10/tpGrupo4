@@ -64,6 +64,7 @@ public class ProductoController {
         return modelAndView;
     }
     
+    @
     
     @GetMapping("/producto")
 	public ModelAndView producto() {

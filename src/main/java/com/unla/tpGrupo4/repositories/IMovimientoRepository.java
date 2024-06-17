@@ -17,5 +17,8 @@ public interface IMovimientoRepository extends JpaRepository<Movimiento, Seriali
 
 	@Query("SELECT m FROM Movimiento m JOIN FETCH m.producto")
 	public List<Movimiento> findMovimientos();
+	
+	
+	Movimiento findFirstByProducto_IdProducto(int idProducto);
 
 }

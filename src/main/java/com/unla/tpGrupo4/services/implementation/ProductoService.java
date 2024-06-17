@@ -1,5 +1,6 @@
 package com.unla.tpGrupo4.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,6 +28,14 @@ public class ProductoService implements IProductoService {
 	public List<Producto> verProductos() {
 		return productoRepository.findAll();
 	}
+	
+	public List<Producto> productosAReabastecer() {
+		return productoRepository.productosAReabastecer();
+	}
+	
+	
+	
+	
 
 	public void crearProducto(Producto producto) {
 
