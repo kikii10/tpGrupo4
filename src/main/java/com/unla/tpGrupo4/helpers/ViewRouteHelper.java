@@ -10,7 +10,6 @@ public class ViewRouteHelper {
 	public final static String USER_LOGIN = "user/login";
 	public final static String USER_LOGOUT = "user/logout";
 	public final static String USER_ADMIN = "user/admin";
-	public final static String USER_USER = "user/user";
 	
 	//PRODUCTO
 	public final static String PRODUCTO = "producto/producto";
@@ -24,7 +23,7 @@ public class ViewRouteHelper {
 	
 	//COMPRA
 	public final static String COMPRA = "compra/compra-form";
-	public final static String VER_COMPRA = "compra/compraTest";
+	public final static String VER_COMPRA = "compra/compras";
 	
 	//CONSULTAS
 		public final static String CONSULTAS = "consultas/consultas";

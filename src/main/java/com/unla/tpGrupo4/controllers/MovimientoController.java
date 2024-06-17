@@ -137,7 +137,7 @@ public class MovimientoController {
 
 
     @GetMapping("/consultas")
-    public String consultas(Model model) {
+    public String consultas() {
        
         return ViewRouteHelper.CONSULTAS;
     }
