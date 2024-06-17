@@ -55,7 +55,7 @@
 							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 							Inicio
 						</a>
-						
+
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
@@ -88,9 +88,13 @@
 							<div class="sb-nav-link-icon"><i class="fas fa-cart-shopping"></i></div>
 							Compras
 						</a>
+						<a class="nav-link" href="stock">
+							<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+							Stock
+						</a>
 						<a class="nav-link" href="consultas">
 							<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-							consultas
+							Consultas
 						</a>
 					</div>
 				</div>
@@ -140,8 +144,7 @@
 										<td th:text="${producto.stockMinimo}"></td>
 										<td>
 											<!-- <a th:href="@{/formulario-modificar-producto/{id}(id=${producto.idProducto})}" -->
-											<a href="#"
-												class="btn btn-primary">Reabastecer</a>
+											<a href="#" class="btn btn-primary">Reabastecer</a>
 										</td>
 									</tr>
 
