@@ -55,7 +55,7 @@
 							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 							Inicio
 						</a>
-						
+
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
@@ -99,7 +99,7 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Stock</h1>
+					<h1 class="mt-4">Predidos Pendientes</h1>
 					<div class="card mb-4">
 						<div class="card-body">
 							<table id="datatablesSimple">
@@ -137,9 +137,9 @@
 										<td th:text="${movimiento.precioCompra}"></td>
 										<td th:text="${movimiento.proveedor}"></td>
 										<td>
-											
+
 											<a th:href="@{/finalizar_movimiento/{id}(id=${movimiento.idMovimiento})}"
-																							class="btn btn-warning">finalizar</a>
+												class="btn btn-warning">finalizar</a>
 											<button class="btn btn-danger">Eliminar</button>
 										</td>
 									</tr>
@@ -151,7 +151,7 @@
 					</div>
 				</div>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Compras</h1>
+					<h1 class="mt-4">Predidos Finalizados</h1>
 					<div class="card mb-4">
 						<div class="card-body">
 							<table id="datatablesSimple2">
@@ -159,28 +159,35 @@
 									<tr>
 										<th>Nombre Producto</th>
 										<th>Cantidad</th>
-										<th>Precio Final</th>
 										<th>Fecha</th>
-										<th>Usuario</th>
+										<th>Finalizado</th>
+										<th>Precio compra</th>
+										<th>proveedor</th>
+										<th>Acciones</th>>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
 										<th>Nombre Producto</th>
-										<th>Cantidad</th>
-										<th>Precio Final</th>
-										<th>Fecha</th>
-										<th>Usuario</th>
+											<th>Cantidad</th>
+											<th>Fecha</th>
+											<th>Finalizado</th>
+											<th>Precio compra</th>
+											<th>proveedor</th>
+											<th>Acciones</th>
 									</tr>
 								</tfoot>
 								<tbody>
-									<tr th:each="compra : ${compras}">
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-									</tr>
+									<tr th:each="movimientoF : ${movimientosFin}">
+										<td th:text="${movimientoF.producto.nombre}"></td>
+										<td th:text="${movimientoF.cantidad}"></td>
+										<td th:text="${movimientoF.fecha}"></td>
+										<td th:text="${movimientoF.finalizado}"></td>
+										<td th:text="${movimientoF.precioCompra}"></td>
+										<td th:text="${movimientoF.proveedor}"></td>
+										<td>
+											<button class="btn btn-danger">Eliminar</button>
+										</td>
 
 
 								</tbody>

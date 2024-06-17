@@ -26,6 +26,8 @@ public class ViewRouteHelper {
 	public final static String COMPRA = "compra/compra-form";
 	public final static String VER_COMPRA = "compra/compraTest";
 	
+	//CONSULTAS
+		public final static String CONSULTAS = "consultas/consultas";
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
 	public final static String ADMIN = "/admin";

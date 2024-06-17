@@ -1,5 +1,6 @@
 package com.unla.tpGrupo4.services.implementation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -18,5 +19,8 @@ public interface IMovimientoService {
     public List<Movimiento> findMovimientos();
     public Movimiento insertOrUpdate(Movimiento m);
     public void finalizar(Movimiento m);
-
+    public List<Movimiento> buscarMovimientosPorProducto(int productId);
+    public List<Movimiento> buscarMovimientosEntreFechas(LocalDate fechaInicio,LocalDate fechaFin);
+    public List<Movimiento> findMovimientosFinalizados();
+    public List<Movimiento> findMovimientosNoFinalizados();
 }
