@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Consultas</title>
+	<link rel="stylesheet" href="/css/consultas.css">
+</head>
+
+<body>
+	<header>
+		<a>Consultas</a>
+		<a href="/admin">Volver a admin</a>
+	</header>
+	<main>
+		<div class="opciones">
+
+			<form th:action="@{/movimientos}" method="get">
+				<label for="fechaInicio">Fecha de Inicio:</label>
+				<input type="date" id="fechaInicio" name="fechaInicio" required>
+				<label for="fechaFin">Fecha de Fin:</label>
+				<input type="date" id="fechaFin" name="fechaFin" required>
+				<button type="submit" class="subir">Buscar</button>
+			</form>
+
+			<form th:action="@{/movimientosPorProducto}" method="get">
+				<label for="productId">ID del Producto:</label>
+				<input type="number" id="productId" name="productId" required>
+				<button type="submit" class="subir">Buscar por Producto</button>
+			</form>
+		</div>
+		<div class="tablas">
+
+			<table>
+				<caption>Movimientos</caption>
+				<thead>
+					<tr>
+						<th>ID Pedido</th>
+						<th>Proveedor</th>
+						<th>Fecha</th>
+						<th>Cantidad</th>
+						<th>Finalizado</th>
+						<th>ID Producto</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="movimiento : ${movimientos}">
+						<td th:text="${movimiento.idMovimiento}"></td>
+						<td th:text="${movimiento.proveedor}"></td>
+						<td th:text="${movimiento.fecha}"></td>
+						<td th:text="${movimiento.cantidad}"></td>
+						<td th:text="${movimiento.finalizado}"></td>
+						<td th:text="${movimiento.producto.idProducto}"></td>
+					</tr>
+				</tbody>
+
+			</table>
+
+			<table>
+				<caption>Compras</caption>
+				<thead>
+					<tr>
+						<th>ID Compra</th>
+						<th>Usuario</th>
+						<th>Producto</th>
+						<th>Fecha</th>
+						<th>Cantidad</th>
+						<th>Precio Final</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="compra : ${compras}">
+						<td th:text="${compra.idCompra}"></td>
+						<td th:text="${compra.user.username}"></td>
+						<td th:text="${compra.producto.nombre}"></td>
+						<td th:text="${compra.fecha}"></td>
+						<td th:text="${compra.cantidad}"></td>
+						<td th:text="${compra.precioFinal}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="balance">
+			<h2>Balance</h2>
+			<p>Balance de Pedidos: <span th:text="${#numbers.formatDecimal(balancePedidos, 1, 2)}"></span></p>
+			<p>Balance de Compras: <span th:text="${#numbers.formatDecimal(balanceCompra, 1, 2)}"></span></p>
+			<p>Balance Final: <span th:text="${#numbers.formatDecimal(balanceFinal, 1, 2)}"></span></p>
+		</div>
+	</main>
+
+	<footer>
+		<h3>Copiright &copy; Grupo 4</h3>
+	</footer>
+
+</body>
+
+</html>

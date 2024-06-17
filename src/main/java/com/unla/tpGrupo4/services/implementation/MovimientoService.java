@@ -73,6 +73,19 @@ public class MovimientoService implements IMovimientoService {
 	    public List<Movimiento> findMovimientos() {
 	        return movimientoRepository.findMovimientos();
 	    }
+        public List<Movimiento> buscarMovimientosEntreFechas(LocalDate startDate, LocalDate endDate) {
+	        
+	    	return movimientoRepository.findAllByFechaBetween(startDate, endDate);
+	    }
+	    public List<Movimiento> buscarMovimientosPorProducto(int productId) {
+	        return movimientoRepository.findAllByProductoId(productId);
+	    }
+	    public List<Movimiento> findMovimientosFinalizados(){
+	    	return movimientoRepository.findMovimientosFinalizados();
+	    };
+	    public List<Movimiento> findMovimientosNoFinalizados(){
+	    	return movimientoRepository.findMovimientosNoFinalizados();
+	    };
 	    
 	    public void finalizar(Movimiento m) {
 	    	m.setFinalizado(true);

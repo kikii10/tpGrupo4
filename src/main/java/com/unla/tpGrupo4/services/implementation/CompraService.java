@@ -79,5 +79,12 @@ public class CompraService implements ICompraService{
     public List<Compra> findCompras(){
     	return compraRepository.findCompras();
     }
+  public List<Compra> buscarComprasEntreFechas(LocalDate startDate, LocalDate endDate) {
+        
+    	return compraRepository.findAllByFechaBetween(startDate, endDate);
+    }
+    public List<Compra> buscarComprasPorProducto(int productId) {
+        return compraRepository.findAllByProductoId(productId);
+    }
 	
 }

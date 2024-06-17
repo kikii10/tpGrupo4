@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>Productos</title>
+	<title>Movimientos</title>
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 	<link href="css/styles.css" rel="stylesheet" />
 	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -55,7 +55,7 @@
 							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 							Inicio
 						</a>
-						
+
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
@@ -88,6 +88,10 @@
 							<div class="sb-nav-link-icon"><i class="fas fa-cart-shopping"></i></div>
 							Compras
 						</a>
+						<a class="nav-link" href="consultas">
+							<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+							consultas
+						</a>
 					</div>
 				</div>
 				<div class="sb-sidenav-footer">
@@ -99,7 +103,7 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Stock</h1>
+					<h1 class="mt-4">Pedidos Pendientes</h1>
 					<div class="card mb-4">
 						<div class="card-body">
 							<table id="datatablesSimple">
@@ -137,10 +141,9 @@
 										<td th:text="${movimiento.precioCompra}"></td>
 										<td th:text="${movimiento.proveedor}"></td>
 										<td>
-											
+
 											<a th:href="@{/finalizar_movimiento/{id}(id=${movimiento.idMovimiento})}"
-																							class="btn btn-warning">finalizar</a>
-											<button class="btn btn-danger">Eliminar</button>
+												class="btn btn-success">finalizar</a>
 										</td>
 									</tr>
 
@@ -151,7 +154,7 @@
 					</div>
 				</div>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Compras</h1>
+					<h1 class="mt-4">Pedidos Finalizados</h1>
 					<div class="card mb-4">
 						<div class="card-body">
 							<table id="datatablesSimple2">
@@ -159,30 +162,30 @@
 									<tr>
 										<th>Nombre Producto</th>
 										<th>Cantidad</th>
-										<th>Precio Final</th>
 										<th>Fecha</th>
-										<th>Usuario</th>
+										<th>Finalizado</th>
+										<th>Precio compra</th>
+										<th>proveedor</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
 										<th>Nombre Producto</th>
-										<th>Cantidad</th>
-										<th>Precio Final</th>
-										<th>Fecha</th>
-										<th>Usuario</th>
+											<th>Cantidad</th>
+											<th>Fecha</th>
+											<th>Finalizado</th>
+											<th>Precio compra</th>
+											<th>proveedor</th>
 									</tr>
 								</tfoot>
 								<tbody>
-									<tr th:each="compra : ${compras}">
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-										<td th:text="${}"></td>
-									</tr>
-
-
+									<tr th:each="movimientoF : ${movimientosFin}">
+										<td th:text="${movimientoF.producto.nombre}"></td>
+										<td th:text="${movimientoF.cantidad}"></td>
+										<td th:text="${movimientoF.fecha}"></td>
+										<td th:text="${movimientoF.finalizado}"></td>
+										<td th:text="${movimientoF.precioCompra}"></td>
+										<td th:text="${movimientoF.proveedor}"></td>
 								</tbody>
 							</table>
 						</div>
