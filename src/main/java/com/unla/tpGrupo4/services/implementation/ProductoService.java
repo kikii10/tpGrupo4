@@ -30,6 +30,7 @@ public class ProductoService implements IProductoService {
 
 	public void crearProducto(Producto producto) {
 
+		producto.setActivo(true);
 		productoRepository.save(producto);
 
 	}
@@ -43,7 +44,11 @@ public class ProductoService implements IProductoService {
 
 	public void borrarProducto(int id) {
 
-		productoRepository.deleteById(id);
+		Producto p = productoRepository.findById(id).orElse(null);
+		
+		p.setActivo(false);
+		
+		productoRepository.save(p);
 
 	}
 
@@ -62,6 +67,7 @@ public class ProductoService implements IProductoService {
 			productoExistente.setStockMinimo(p.getStockMinimo());
 			productoExistente.setDescripcion(p.getDescripcion());
 			productoExistente.setLinkImagen(p.getLinkImagen());
+			productoExistente.setActivo(p.isActivo());
 
 			productoRepository.save(productoExistente);
 		}

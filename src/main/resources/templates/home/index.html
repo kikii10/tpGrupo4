@@ -30,8 +30,11 @@
 						<h4 th:text="${producto.nombre}"></h4>
 						<span>$<span th:text="${producto.precio}"></span></span>
 					</div>
-					<div class="card-3">
 
+					<div th:if="${!producto.activo}" class="card-3">
+						El producto no está disponible
+					</div>
+					<div th:unless="${!producto.activo}" class="card-3">
 						<a th:href="@{/compra-form/{id}(id=${producto.idProducto})}" class="comprar">Comprar</a>
 					</div>
 				</div>
