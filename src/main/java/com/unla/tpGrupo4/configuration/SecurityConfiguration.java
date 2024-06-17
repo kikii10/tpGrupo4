@@ -33,7 +33,7 @@ public class SecurityConfiguration {
                 .cors(cors -> cors.disable())
                 .authorizeRequests(auth -> {
                     auth.requestMatchers("/css/*", "/imgs/*", "/js/*", "/vendor/bootstrap/css/*",
-                            "/vendor/jquery/*", "/vendor/bootstrap/js/*", "/api/v1/**", "/producto/**","/movimiento/**").permitAll();
+                            "/vendor/jquery/*", "/vendor/bootstrap/js/*", "/api/v1/**").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .formLogin(login -> {
