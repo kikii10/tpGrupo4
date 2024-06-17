@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,7 +24,7 @@ import com.unla.tpGrupo4.helpers.ViewRouteHelper;
 import com.unla.tpGrupo4.services.implementation.IProductoService;
 
 @Controller
-
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class ProductoController {
 
     @Autowired

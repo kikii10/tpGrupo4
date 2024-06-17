@@ -1,6 +1,7 @@
 package com.unla.tpGrupo4.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +16,7 @@ import com.unla.tpGrupo4.services.implementation.ICompraService;
 import com.unla.tpGrupo4.services.implementation.IProductoService;
 
 @Controller
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class CompraController {
 	
 	@Autowired
