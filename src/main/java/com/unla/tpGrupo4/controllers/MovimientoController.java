@@ -31,52 +31,49 @@ import com.unla.tpGrupo4.services.implementation.IProductoService;
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 
 public class MovimientoController {
-	@Autowired
-	private IMovimientoService movimientoService;
-	@Autowired
-	 private IProductoService productoService;
-	@Autowired
-	private ICompraService compraService;
-	 @PostMapping("/guardarMovimiento")
-	    public ModelAndView guardarMovimiento(@ModelAttribute Movimiento movimiento) {
-		 
-	    		
-		 movimientoService.crearMovimiento(movimiento);
-	       
-	        return new ModelAndView("redirect:/movimiento"); // Redirige a la lista de productos después de guardar
-	    }
-	 @GetMapping("/formulario-movimiento")
-	    public ModelAndView mostrarFormularioProducto() {
-	        ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.FORMULARIO_M);
-	        List<Producto> productos = productoService.verProductos();
-	        modelAndView.addObject("movimiento", new Movimiento()); // Objeto vacío para binding con el formulario
-	        modelAndView.addObject("productos", productos);
-	        return modelAndView;
-	    }
+@Autowired
+private IMovimientoService movimientoService;
+@Autowired
+private IProductoService productoService;
+@Autowired
+private ICompraService compraService;
 
-	@GetMapping("/movimiento")
-	public ModelAndView movimiento() {
-		ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.MOVIMIENTO);
+@PostMapping("/guardarMovimiento")
+public ModelAndView guardarMovimiento(@ModelAttribute Movimiento movimiento) {
 
-		List<Movimiento> listaFin= movimientoService.findMovimientosFinalizados();
-		List<Movimiento> lista = movimientoService.findMovimientosNoFinalizados();
-		
-		
-		modelAndView.addObject("movimientosFin", listaFin);
-		modelAndView.addObject("movimientos", lista);
-		
+movimientoService.crearMovimiento(movimiento);
 
+return new ModelAndView("redirect:/movimiento"); // Redirige a la lista de productos después de guardar
+}
 
-		return modelAndView;
-	}
-	
-	
-	@GetMapping("/finalizar_movimiento/{id}")
-	 public ModelAndView finalizar_movimiento(@PathVariable int id) {
-		 
-		
-		movimientoService.finalizar(movimientoService.buscarMovimiento(id));
-	       
-	        return new ModelAndView("redirect:/movimiento"); // Redirige a la lista de productos después de guardar
-	    }
+@GetMapping("/formulario-movimiento")
+public ModelAndView mostrarFormularioProducto() {
+ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.FORMULARIO_M);
+List<Producto> productos = productoService.verProductos();
+modelAndView.addObject("movimiento", new Movimiento()); // Objeto vacío para binding con el formulario
+modelAndView.addObject("productos", productos);
+return modelAndView;
+}
+
+@GetMapping("/movimiento")
+public ModelAndView movimiento() {
+ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.MOVIMIENTO);
+
+List<Movimiento> listaFin = movimientoService.findMovimientosFinalizados();
+List<Movimiento> lista = movimientoService.findMovimientosNoFinalizados();
+
+modelAndView.addObject("movimientosFin", listaFin);
+modelAndView.addObject("movimientos", lista);
+
+return modelAndView;
+}
+
+@GetMapping("/finalizar_movimiento/{id}")
+public ModelAndView finalizar_movimiento(@PathVariable int id) {
+
+movimientoService.finalizar(movimientoService.buscarMovimiento(id));
+
+return new ModelAndView("redirect:/movimiento"); // Redirige a la lista de productos después de guardar
+}
+
 }
