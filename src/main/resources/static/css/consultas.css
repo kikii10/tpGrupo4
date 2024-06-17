@@ -1,0 +1,118 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+	background-color: rgb(66, 57, 94);
+	padding: 1%;
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: white;
+}
+
+header a {
+	color: white;
+	font-weight: lighter;
+	font-size: x-large;
+	text-decoration: none;
+}
+
+body{
+	background-color: rgb(23, 23, 23);
+	color: white;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+}
+
+footer {
+	text-align: center;
+	padding: 3%;
+	margin-top:15px;
+	width: 100%;
+	background-color: rgb(66, 57, 94);
+	color: white;
+}
+
+footer h3 {
+	font-weight: lighter;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	align-items: center;
+	justify-content: center;
+	border: 1px rgb(66, 57, 94) solid;
+	border-radius: 15px;
+	padding: 2% 3%;
+}
+
+table {
+	width: 80%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+th,
+td {
+	padding: 10px;
+	border: 1px solid rgb(66, 57, 94);
+	background-color: rgb(23, 23, 23);
+	text-align: left;
+}
+
+th {
+	background-color: rgb(66, 57, 94);
+	color: #fff;
+}
+
+.tablas{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.opciones {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	gap: 30px;
+	margin-top: 15px;
+}
+
+.balance{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 15px;
+	gap: 15px;
+}
+
+.subir {
+	border: 1px solid rgb(66, 57, 94);
+	background-color: rgb(66, 57, 94);
+	color:  white;
+	border-radius: 8px;
+	padding: 5% 10%;
+	text-decoration: none;
+}
+
+.subir:hover {
+	background-color: rgb(120, 105, 165);
+}
