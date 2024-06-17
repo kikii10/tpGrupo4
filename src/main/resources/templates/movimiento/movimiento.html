@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>Productos</title>
+	<title>Movimientos</title>
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 	<link href="css/styles.css" rel="stylesheet" />
 	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -103,7 +103,7 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Predidos Pendientes</h1>
+					<h1 class="mt-4">Pedidos Pendientes</h1>
 					<div class="card mb-4">
 						<div class="card-body">
 							<table id="datatablesSimple">
@@ -143,8 +143,7 @@
 										<td>
 
 											<a th:href="@{/finalizar_movimiento/{id}(id=${movimiento.idMovimiento})}"
-												class="btn btn-warning">finalizar</a>
-											<button class="btn btn-danger">Eliminar</button>
+												class="btn btn-success">finalizar</a>
 										</td>
 									</tr>
 
@@ -155,7 +154,7 @@
 					</div>
 				</div>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Predidos Finalizados</h1>
+					<h1 class="mt-4">Pedidos Finalizados</h1>
 					<div class="card mb-4">
 						<div class="card-body">
 							<table id="datatablesSimple2">
@@ -167,7 +166,6 @@
 										<th>Finalizado</th>
 										<th>Precio compra</th>
 										<th>proveedor</th>
-										<th>Acciones</th>>
 									</tr>
 								</thead>
 								<tfoot>
@@ -178,7 +176,6 @@
 											<th>Finalizado</th>
 											<th>Precio compra</th>
 											<th>proveedor</th>
-											<th>Acciones</th>
 									</tr>
 								</tfoot>
 								<tbody>
@@ -189,11 +186,6 @@
 										<td th:text="${movimientoF.finalizado}"></td>
 										<td th:text="${movimientoF.precioCompra}"></td>
 										<td th:text="${movimientoF.proveedor}"></td>
-										<td>
-											<button class="btn btn-danger">Eliminar</button>
-										</td>
-
-
 								</tbody>
 							</table>
 						</div>
