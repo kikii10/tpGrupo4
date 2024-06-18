@@ -32,11 +32,6 @@ public class ProductoService implements IProductoService {
 	public List<Producto> productosAReabastecer() {
 		return productoRepository.productosAReabastecer();
 	}
-	
-	
-	
-	
-
 	public void crearProducto(Producto producto) {
 
 		producto.setActivo(true);
