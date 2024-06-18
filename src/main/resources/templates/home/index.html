@@ -12,7 +12,10 @@
 	<div class="container">
 		<header>
 			<a href="/index">Home</a>
-			<a href="/logout">Logout</a>
+			<div class="logout">
+				<a th:if="${admin}" href="/admin">Admin</a>
+				<a href="/logout">Logout</a>
+			</div>
 		</header>
 
 		<main>
