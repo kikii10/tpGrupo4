@@ -19,7 +19,7 @@ public interface IProductoRepository extends JpaRepository<Producto, Serializabl
 	 Optional<Producto>  findByCodigo(int codigo); 
  	
  	
- 	@Query("select from Producto p where p.stock <p.stockMinimo")
+ 	@Query("select p from Producto p where p.stock < p.stockMinimo")
 	 List<Producto> productosAReabastecer();
  	 
  	

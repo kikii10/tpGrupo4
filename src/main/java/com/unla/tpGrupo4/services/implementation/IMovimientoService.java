@@ -23,4 +23,5 @@ public interface IMovimientoService {
     public List<Movimiento> buscarMovimientosEntreFechas(LocalDate fechaInicio,LocalDate fechaFin);
     public List<Movimiento> findMovimientosFinalizados();
     public List<Movimiento> findMovimientosNoFinalizados();
+    public void reabastecer(Producto producto, int cantidad);
 }

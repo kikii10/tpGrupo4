@@ -76,4 +76,5 @@ movimientoService.finalizar(movimientoService.buscarMovimiento(id));
 return new ModelAndView("redirect:/movimiento"); // Redirige a la lista de productos después de guardar
 }
 
+
 }

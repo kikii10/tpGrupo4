@@ -95,13 +95,7 @@ public class MovimientoService implements IMovimientoService {
 	    public void reabastecer(Producto producto, int cantidad) {
 	    	
 	    	producto.setStock(producto.getStock()+cantidad);
-                   Movimiento movimiento_reabastecer = new Movimiento();
-                   movimiento_reabastecer.setProducto(producto);
-                   movimiento_reabastecer.setCantidad(cantidad);
-                   movimiento_reabastecer.setFinalizado(false);
-                   movimiento_reabastecer.setFecha(LocalDate.now());
-                   movimiento_reabastecer.setPrecioCompra(producto.getPrecio()*cantidad);
-                   movimiento_reabastecer.setProveedor(movimientoRepository.findFirstByProducto_IdProducto(producto.getIdProducto()).getProveedor());
+                   Movimiento movimiento_reabastecer = new Movimiento("Central de reabastecimiento", producto, LocalDate.now(), cantidad, false, (double)producto.getPrecio()*cantidad);
                   productoService.insertOrUpdate(movimiento_reabastecer.getProducto());
                    movimientoRepository.save(movimiento_reabastecer);
 	    }
