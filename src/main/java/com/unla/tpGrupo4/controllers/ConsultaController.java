@@ -39,7 +39,6 @@ public class ConsultaController {
         ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.CONSULTAS);
         List<Movimiento> lista = movimientoService.buscarMovimientosEntreFechas(fechaInicio, fechaFin);
         List<Compra> lista2 = compraService.buscarComprasEntreFechas(fechaInicio, fechaFin);
-        Producto productoMasComprado = movimientoService.findProductoMasComprado();
         
        double balancePedidos = 0;
        for (Movimiento m : lista) {
@@ -57,7 +56,6 @@ public class ConsultaController {
         modelAndView.addObject("balancePedidos", balancePedidos);
         modelAndView.addObject("balanceCompra", balanceCompra);
         modelAndView.addObject("balanceFinal", balanceFinal);
-        modelAndView.addObject("productoMasComprado", productoMasComprado);
 
         return modelAndView;
     }
@@ -67,7 +65,6 @@ public class ConsultaController {
         ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.CONSULTAS);
         List<Movimiento> lista = movimientoService.buscarMovimientosPorProducto(productId);
         List<Compra> lista2 = compraService.buscarComprasPorProducto(productId);
-        Producto productoMasComprado = movimientoService.findProductoMasComprado();
         double balancePedidos = 0;
         for (Movimiento m : lista) {
      	   balancePedidos = balancePedidos + m.getPrecioCompra();
@@ -84,7 +81,6 @@ public class ConsultaController {
          modelAndView.addObject("balancePedidos", balancePedidos);
          modelAndView.addObject("balanceCompra", balanceCompra);
          modelAndView.addObject("balanceFinal", balanceFinal);
-         modelAndView.addObject("productoMasComprado", productoMasComprado);
        
         
        
