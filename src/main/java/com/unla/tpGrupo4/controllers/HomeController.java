@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import com.unla.tpGrupo4.entities.Producto;
 import com.unla.tpGrupo4.entities.User;
 import com.unla.tpGrupo4.helpers.ViewRouteHelper;
 import com.unla.tpGrupo4.services.implementation.IProductoService;
+import com.unla.tpGrupo4.services.implementation.UserService;
 
 @Controller
 @RequestMapping("/")
@@ -24,6 +26,9 @@ public class HomeController {
 	
 	@Autowired
     private IProductoService productoService;
+	
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("/index")
 	public ModelAndView index() {
@@ -31,6 +36,14 @@ public class HomeController {
 		
 		List<ProductoDTO> lista = productoService.getAll();
 		modelAndView.addObject("productos", lista);
+		
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		UserDetails userDetails = userService.loadUserByUsername(username);
+
+		boolean isAdmin = userDetails.getAuthorities().stream()
+				.anyMatch(role -> "ROLE_ADMIN".equals(role.getAuthority()));
+		
+		modelAndView.addObject("admin", isAdmin);
 		
 		return modelAndView;
 	}

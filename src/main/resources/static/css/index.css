@@ -144,5 +144,11 @@ form{
     border: 1px black solid;
 }
 
+.logout{
+	display: flex;
+	align-items: center;
+	gap: 30px;
+}
+
 
 
