@@ -32,10 +32,13 @@ public class ProductoService implements IProductoService {
 	public List<Producto> productosAReabastecer() {
 		return productoRepository.productosAReabastecer();
 	}
+	
 	public void crearProducto(Producto producto) {
-
-		producto.setActivo(true);
-		productoRepository.save(producto);
+		if((producto.getPrecio() > 0) && (producto.getStock() > 0) && (producto.getStock() > 0)) {
+			producto.setActivo(true);
+			productoRepository.save(producto);
+		}
+		
 
 	}
 
@@ -61,27 +64,12 @@ public class ProductoService implements IProductoService {
 	}
 
 	@Override
-	public void ModificarProducto(int id, Producto p) {
-		Producto productoExistente = productoRepository.findById(id).orElse(null);
-
-		if (productoExistente != null) {
-			productoExistente.setCodigo(p.getCodigo());
-			productoExistente.setPrecio(p.getPrecio());
-			productoExistente.setNombre(p.getNombre());
-			productoExistente.setStockMinimo(p.getStockMinimo());
-			productoExistente.setDescripcion(p.getDescripcion());
-			productoExistente.setLinkImagen(p.getLinkImagen());
-			productoExistente.setActivo(p.isActivo());
-
-			productoRepository.save(productoExistente);
-		}
-
-	}
-
-	@Override
 	public Producto insertOrUpdate(Producto p) {
-
-		return productoRepository.save(p);
+		if((p.getPrecio() > 0) && (p.getStock() > 0) && (p.getStock() > 0)) {
+			return productoRepository.save(p);
+		}else {
+			return null;
+		}
 	}
 
 	@Override

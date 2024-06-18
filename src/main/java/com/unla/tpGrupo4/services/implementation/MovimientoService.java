@@ -38,7 +38,7 @@ public class MovimientoService implements IMovimientoService {
     	   Producto producto = m.getProducto();
            if (producto != null) {
                Producto productoActualizado = productoService.buscarProducto(producto.getIdProducto());
-               if (productoActualizado != null) {
+               if ((productoActualizado != null) && (m.getCantidad() > 0)) {
                    productoActualizado.setStock(productoActualizado.getStock() + m.getCantidad());
                    productoService.insertOrUpdate( productoActualizado);
                    movimientoRepository.save(m);

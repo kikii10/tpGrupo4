@@ -44,20 +44,22 @@ public class CompraService implements ICompraService{
     	//producto comprado
     	Producto p = productoService.buscarProducto(id);
     	
-    	//cliente
-    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
- 		User u = userRepository.findByUsernameAndFetchUserRolesEagerly(username);
-    	
-    	m.setFecha(LocalDate.now());
-    	m.setPrecioFinal( p.getPrecio() * m.getCantidad());
-    	//m.setProducto(modelMapper.map(p, ProductoDTO.class));
-    	m.setProducto(p);
-    	m.setUser(u);
-    	
-        compraRepository.save(m);
-        
-        p.setStock(p.getStock() - m.getCantidad());
-        productoService.insertOrUpdate(p);
+    	if((m.getCantidad() <= p.getStock()) && (m.getCantidad() > 0)) {
+	    	//cliente
+	    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
+	 		User u = userRepository.findByUsernameAndFetchUserRolesEagerly(username);
+	    	
+	    	m.setFecha(LocalDate.now());
+	    	m.setPrecioFinal( p.getPrecio() * m.getCantidad());
+	    	//m.setProducto(modelMapper.map(p, ProductoDTO.class));
+	    	m.setProducto(p);
+	    	m.setUser(u);
+	    	
+	        compraRepository.save(m);
+	        
+	        p.setStock(p.getStock() - m.getCantidad());
+	        productoService.insertOrUpdate(p);
+    	}
 
     }
    
