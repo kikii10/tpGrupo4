@@ -31,15 +31,20 @@ import com.unla.tpGrupo4.services.implementation.IProductoService;
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 
 public class MovimientoController {
-	@Autowired
-	private IMovimientoService movimientoService;
-	@Autowired
-	private IProductoService productoService;
-	@Autowired
-	private ICompraService compraService;
+@Autowired
+private IMovimientoService movimientoService;
+@Autowired
+private IProductoService productoService;
+@Autowired
+private ICompraService compraService;
 
-	@PostMapping("/guardarMovimiento")
-	public ModelAndView guardarMovimiento(@ModelAttribute Movimiento movimiento) {
+@PostMapping("/guardarMovimiento")
+public ModelAndView guardarMovimiento(@ModelAttribute Movimiento movimiento) {
+
+
+movimientoService.crearMovimiento(movimiento);
+
+
 
 		movimientoService.crearMovimiento(movimiento);
 
@@ -73,7 +78,8 @@ public class MovimientoController {
 
 		movimientoService.finalizar(movimientoService.buscarMovimiento(id));
 
-		return new ModelAndView("redirect:/movimiento"); // Redirige a la lista de productos después de guardar
-	}
+	       
+	        return new ModelAndView("redirect:/movimiento"); // Redirige a la lista de productos después de guardar
+	    }
 
 }

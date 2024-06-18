@@ -143,8 +143,14 @@
 										<td th:text="${producto.stock}"></td>
 										<td th:text="${producto.stockMinimo}"></td>
 										<td>
-											<!-- <a th:href="@{/formulario-modificar-producto/{id}(id=${producto.idProducto})}" -->
-											<a href="#" class="btn btn-primary">Reabastecer</a>
+
+											 
+											<form th:action="@{/reabastecer-producto/{id}(id=${producto.idProducto})}" method="post" style="display:inline;">
+											    <input type="number" name="cantidad" value="0" min="1" />
+											    <button type="submit" class="btn btn-primary">Reabastecer</button>
+											</form>
+
+
 										</td>
 									</tr>
 

@@ -16,23 +16,30 @@ import com.unla.tpGrupo4.entities.User;
 
 @Repository("movimientoRepository")
 public interface IMovimientoRepository extends JpaRepository<Movimiento, Serializable> {
-
+	Movimiento findFirstByProducto_IdProducto(int idProducto);
 	@Query("SELECT m FROM Movimiento m JOIN FETCH m.producto")
-	public List<Movimiento> findMovimientos();
-	
-	
-	@Query("SELECT m FROM Movimiento m WHERE m.fecha BETWEEN :fechaInicio AND :fechaFin")
+    public List<Movimiento> findMovimientos();
+
+
+    @Query("SELECT m FROM Movimiento m WHERE m.fecha BETWEEN :fechaInicio AND :fechaFin")
     List<Movimiento> findAllByFechaBetween(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin);
 
-	
-	 @Query("SELECT m FROM Movimiento m WHERE m.producto.idProducto = :productId")
-	   List<Movimiento> findAllByProductoId(@Param("productId") int productId);
-	 
-	 
-	 @Query("SELECT m FROM Movimiento m JOIN FETCH m.producto WHERE m.finalizado = true")
-	    List<Movimiento> findMovimientosFinalizados();
+
+
+     @Query("SELECT m FROM Movimiento m WHERE m.producto.idProducto = :productId")
+       List<Movimiento> findAllByProductoId(@Param("productId") int productId);
+
+
+     @Query("SELECT m FROM Movimiento m JOIN FETCH m.producto WHERE m.finalizado = true")
+        List<Movimiento> findMovimientosFinalizados();
+
+     
 
 	    @Query("SELECT m FROM Movimiento m JOIN FETCH m.producto WHERE m.finalizado = false")
 	    List<Movimiento> findMovimientosNoFinalizados();
+	    
+	    @Query("SELECT m.producto FROM Movimiento m GROUP BY m.producto ORDER BY SUM(m.cantidad) DESC")
+	    List<Producto>  findProductoMasComprado();
+
 
 }

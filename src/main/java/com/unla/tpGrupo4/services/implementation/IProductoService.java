@@ -18,4 +18,6 @@ public interface IProductoService {
 	public void ModificarProducto(int id, Producto p);
 	public boolean existeProductoCodigo(int codigo);
 	public Producto insertOrUpdate(Producto p);
+	public List<Producto> productosAReabastecer();
+	 
 }

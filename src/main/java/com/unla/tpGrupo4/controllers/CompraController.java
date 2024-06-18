@@ -19,7 +19,6 @@ import com.unla.tpGrupo4.services.implementation.IProductoService;
 import com.unla.tpGrupo4.services.implementation.UserService;
 
 @Controller
-
 public class CompraController {
 
 	@Autowired
@@ -48,7 +47,7 @@ public class CompraController {
 
 		return mv;
 	}
-
+	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/compras")
 	public ModelAndView compras() {

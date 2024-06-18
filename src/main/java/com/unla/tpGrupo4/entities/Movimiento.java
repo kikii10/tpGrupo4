@@ -53,5 +53,16 @@ public class Movimiento {
 	@Column(name ="precioCompra", nullable = false)
 	private double precioCompra;
 
+	public Movimiento(String proveedor, Producto producto, LocalDate fecha, int cantidad, boolean finalizado,
+			double precioCompra) {
+		super();
+		this.proveedor = proveedor;
+		this.producto = producto;
+		this.fecha = fecha;
+		this.cantidad = cantidad;
+		this.finalizado = finalizado;
+		this.precioCompra = producto.getPrecio()*cantidad;
+	}
+
 
 }

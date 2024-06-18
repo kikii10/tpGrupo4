@@ -66,6 +66,7 @@ public class ProductoController {
     }
     
     
+    
     @GetMapping("/producto")
 	public ModelAndView producto() {
 		ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.PRODUCTO);

@@ -86,9 +86,24 @@ public class MovimientoService implements IMovimientoService {
 	    public List<Movimiento> findMovimientosNoFinalizados(){
 	    	return movimientoRepository.findMovimientosNoFinalizados();
 	    };
-	    
+
+		public Producto findProductoMasComprado() {
+
+			Producto p = movimientoRepository.findProductoMasComprado().get(0);
+			return p;
+		};
+
 	    public void finalizar(Movimiento m) {
 	    	m.setFinalizado(true);
 	    	insertOrUpdate(m);	
 	    }
+	    
+	    public void reabastecer(Producto producto, int cantidad) {
+	    	
+	    	producto.setStock(producto.getStock()+cantidad);
+                   Movimiento movimiento_reabastecer = new Movimiento("Central de reabastecimiento", producto, LocalDate.now(), cantidad, false, (double)producto.getPrecio()*cantidad);
+                  productoService.insertOrUpdate(movimiento_reabastecer.getProducto());
+                   movimientoRepository.save(movimiento_reabastecer);
+	    }
+	    
 	}
