@@ -25,7 +25,7 @@ public interface IMovimientoRepository extends JpaRepository<Movimiento, Seriali
     List<Movimiento> findAllByFechaBetween(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin);
 
 
-<<<<<<< HEAD
+
      @Query("SELECT m FROM Movimiento m WHERE m.producto.idProducto = :productId")
        List<Movimiento> findAllByProductoId(@Param("productId") int productId);
 
@@ -33,17 +33,13 @@ public interface IMovimientoRepository extends JpaRepository<Movimiento, Seriali
      @Query("SELECT m FROM Movimiento m JOIN FETCH m.producto WHERE m.finalizado = true")
         List<Movimiento> findMovimientosFinalizados();
 
-        @Query("SELECT m FROM Movimiento m JOIN FETCH m.producto WHERE m.finalizado = false")
-        List<Movimiento> findMovimientosNoFinalizados();
+     
 
-        @Query("SELECT m.producto " + "FROM Movimiento m " +"GROUP BY m.producto " + "ORDER BY SUM(m.cantidad) DESC")
-            Producto findProductoMasComprado();
-=======
 	    @Query("SELECT m FROM Movimiento m JOIN FETCH m.producto WHERE m.finalizado = false")
 	    List<Movimiento> findMovimientosNoFinalizados();
 	    
 	    @Query("SELECT m.producto FROM Movimiento m GROUP BY m.producto ORDER BY SUM(m.cantidad) DESC")
 	    List<Producto>  findProductoMasComprado();
->>>>>>> b958850812200b166c7a73d8920c283eb5f70f1a
+
 
 }
