@@ -86,7 +86,13 @@ public class MovimientoService implements IMovimientoService {
 	    public List<Movimiento> findMovimientosNoFinalizados(){
 	    	return movimientoRepository.findMovimientosNoFinalizados();
 	    };
-	    
+
+		public Producto findProductoMasComprado() {
+
+			Producto p = movimientoRepository.findProductoMasComprado().get(0);
+			return p;
+		};
+
 	    public void finalizar(Movimiento m) {
 	    	m.setFinalizado(true);
 	    	insertOrUpdate(m);	

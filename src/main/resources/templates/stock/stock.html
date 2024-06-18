@@ -55,7 +55,7 @@
 							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 							Inicio
 						</a>
-						
+
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
@@ -88,9 +88,13 @@
 							<div class="sb-nav-link-icon"><i class="fas fa-cart-shopping"></i></div>
 							Compras
 						</a>
+						<a class="nav-link" href="stock">
+							<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+							Stock
+						</a>
 						<a class="nav-link" href="consultas">
 							<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-							consultas
+							Consultas
 						</a>
 					</div>
 				</div>
@@ -139,12 +143,17 @@
 										<td th:text="${producto.stock}"></td>
 										<td th:text="${producto.stockMinimo}"></td>
 										<td>
+<<<<<<< HEAD
 											 
 											<form th:action="@{/reabastecer-producto/{id}(id=${producto.idProducto})}" method="post" style="display:inline;">
 											    <input type="number" name="cantidad" value="0" min="1" />
 											    <button type="submit" class="btn btn-primary">Reabastecer</button>
 											</form>
 
+=======
+											<!-- <a th:href="@{/formulario-modificar-producto/{id}(id=${producto.idProducto})}" -->
+											<a href="#" class="btn btn-primary">Reabastecer</a>
+>>>>>>> b958850812200b166c7a73d8920c283eb5f70f1a
 										</td>
 									</tr>
 
