@@ -36,6 +36,7 @@ public class MovimientoService implements IMovimientoService {
        @Transactional
 	    public void crearMovimiento(Movimiento m) {
     	   Producto producto = m.getProducto();
+
     	    if (producto != null) {
     	        // Busca el producto actualizado en la base de datos
     	        Producto productoActualizado = productoService.buscarProducto(producto.getIdProducto());
@@ -52,6 +53,7 @@ public class MovimientoService implements IMovimientoService {
     	            
     	            // Guarda el movimiento
     	            movimientoRepository.save(m);
+
        }
     	    }
        }
