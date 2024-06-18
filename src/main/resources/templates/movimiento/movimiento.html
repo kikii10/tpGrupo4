@@ -142,7 +142,7 @@
 										<td th:text="${movimiento.cantidad}"></td>
 										<td th:text="${movimiento.fecha}"></td>
 										<td th:text="${movimiento.finalizado}"></td>
-										<td th:text="${movimiento.precioCompra}"></td>
+										<td th:text="${#numbers.formatDecimal(movimiento.precioCompra, 1, 'POINT', 2, 'POINT')}"></td>
 										<td th:text="${movimiento.proveedor}"></td>
 										<td>
 

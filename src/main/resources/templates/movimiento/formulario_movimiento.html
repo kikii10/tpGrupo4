@@ -35,7 +35,7 @@
 	        <label for="fecha" class="form-label">Fecha</label>
 	        <input type="date" class="form-control" id="fecha" th:field="*{fecha}" required>
 	    </div>
-	    
+		<input type="hidden" th:field="*{precioCompra}">
 	    <div class="mb-3">
 	        <label for="cantidad" class="form-label">Cantidad</label>
 	        <input type="number" min="1" class="form-control" id="cantidad" th:field="*{cantidad}" required>

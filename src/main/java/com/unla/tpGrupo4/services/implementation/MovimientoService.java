@@ -36,16 +36,26 @@ public class MovimientoService implements IMovimientoService {
        @Transactional
 	    public void crearMovimiento(Movimiento m) {
     	   Producto producto = m.getProducto();
-           if (producto != null) {
-               Producto productoActualizado = productoService.buscarProducto(producto.getIdProducto());
-               if (productoActualizado != null) {
-                   productoActualizado.setStock(productoActualizado.getStock() + m.getCantidad());
-                   productoService.insertOrUpdate( productoActualizado);
-                   movimientoRepository.save(m);
-               }
-           }
+    	    if (producto != null) {
+    	        // Busca el producto actualizado en la base de datos
+    	        Producto productoActualizado = productoService.buscarProducto(producto.getIdProducto());
+    	        if (productoActualizado != null) {
+    	            // Actualiza el stock del producto
+    	            productoActualizado.setStock(productoActualizado.getStock() + m.getCantidad());
+    	            
+    	            // Calcula y establece el precio de compra
+    	            double precioCompra = productoActualizado.getPrecio() * m.getCantidad();
+    	            m.setPrecioCompra(precioCompra);
+    	            
+    	            // Guarda el producto actualizado
+    	            productoService.insertOrUpdate(productoActualizado);
+    	            
+    	            // Guarda el movimiento
+    	            movimientoRepository.save(m);
        }
-	    	
+    	    }
+       }
+    	   
 	    
 	   
 	    public void borrarMovimiento(int id) {
