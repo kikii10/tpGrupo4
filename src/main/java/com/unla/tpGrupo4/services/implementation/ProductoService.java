@@ -65,7 +65,7 @@ public class ProductoService implements IProductoService {
 
 	@Override
 	public Producto insertOrUpdate(Producto p) {
-		if((p.getPrecio() > 0) && (p.getStock() > 0) && (p.getStock() > 0)) {
+		if((p.getPrecio() > 0) && (p.getStock() >= 0) && (p.getStockMinimo() >= 0)) {
 			return productoRepository.save(p);
 		}else {
 			return null;
